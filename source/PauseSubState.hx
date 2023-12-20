@@ -191,7 +191,6 @@ class PauseSubState extends MusicBeatSubstate
 		levelDifficulty.x = FlxG.width - (levelDifficulty.width + 20);
 
 		FlxTween.tween(backBg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
-		FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(levelInfo, {alpha: 1, y: 20}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
 		FlxTween.tween(levelDifficulty, {alpha: 1, y: levelDifficulty.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.5,
 		onComplete: function(tween:FlxTween)
@@ -242,8 +241,6 @@ class PauseSubState extends MusicBeatSubstate
 	override function update(elapsed:Float)
 	{
 		var scrollSpeed:Float = 50;
-		bg.x -= scrollSpeed * elapsed;
-		bg.y -= scrollSpeed * elapsed;
 
 		timeElapsed += elapsed;
 		if (pauseMusic.volume < 0.75)
@@ -416,16 +413,6 @@ class PauseSubState extends MusicBeatSubstate
 	{
 		var beforeInt = FlxG.random.int(0, 6);
 		var randomInt = FlxG.random.int(0, 6);
-				
-		FlxTween.color(bg, 4, bg.color, colorArray[beforeInt], {
-			onComplete: function(twn)
-			{
-				if (beforeInt != randomInt)
-					beforeInt = randomInt;
-				
-				tweenColorShit4();
-			}
-		});
 	}
 	override function close()
 	{
